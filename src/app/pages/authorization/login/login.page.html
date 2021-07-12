@@ -1,0 +1,23 @@
+
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SIGN IN</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="loginForm" (ngSubmit)="onSignin()">
+    
+    <ion-item>
+      <ion-label position="floating">E-posta Adresi</ion-label>
+      <ion-input formControlName='email' type="email" placeholder="Email" ></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Şifre</ion-label>
+      <ion-input formControlName='password' type="password" placeholder="Password" ></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" >Sign In</ion-button>
+  </form>
+</ion-content>

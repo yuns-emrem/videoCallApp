@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>SIGN UP</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="registerForm" (ngSubmit)="onSignup()">
+    
+    <ion-item>
+      <ion-label position="floating">E-posta Adresi</ion-label>
+      <ion-input formControlName='email' type="email" placeholder="Email" #email></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Adınız</ion-label>
+      <ion-input formControlName='name' type="text" placeholder="Ad" #name></ion-input>
+    </ion-item>
+    
+    <ion-item>
+      <ion-label position="floating">Şifre</ion-label>
+      <ion-input formControlName='password' type="password" placeholder="Password" #password></ion-input>
+    </ion-item>
+
+    <ion-button expand="block" type="submit" >Sign Up</ion-button>
+  </form>
+</ion-content>
