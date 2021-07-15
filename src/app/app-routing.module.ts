@@ -13,7 +13,7 @@ const routes: Routes = [
 
       {
         path: '',
-        redirectTo: 'home',
+        redirectTo: 'content',
         pathMatch: 'full'
       },
       {
@@ -26,7 +26,21 @@ const routes: Routes = [
       },
     ]
 
-  }
+  },
+  {
+    path: 'content',
+    children: [
+      {
+        path: '',
+        redirectTo: 'users',
+        pathMatch: 'full'
+      },
+      {
+        path: 'users',
+        loadChildren: () => import('./pages/content/users/users.module').then(m => m.UsersPageModule)
+      }
+    ]
+  },
 
 ];
 

@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { AngularFireAuth } from '@angular/fire/auth'
 import * as firebase from 'firebase';
 import { LocalStorageService } from './local-storage.service';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn :'root'
@@ -14,16 +15,19 @@ export class AuthService {
   private readonly fireAuth: AngularFireAuth;
   private readonly fireStore: AngularFirestore;
   private readonly localStorage:LocalStorageService;
+  private readonly router:Router;
 
 
   constructor(
     fireAuth: AngularFireAuth,
     fireStore: AngularFirestore,
     localStorage:LocalStorageService,
+    router:Router,
   ) {
     this.fireAuth = fireAuth;
     this.fireStore = fireStore;
     this.localStorage = localStorage;
+    this.router = router;
   }
 
 
@@ -37,6 +41,7 @@ export class AuthService {
           userName: name,
           registerDate: firebase.default.firestore.Timestamp.now().toMillis()
         })
+        this.router.navigate(['/content/users']);
       })
   }
 
@@ -44,7 +49,8 @@ export class AuthService {
     await this.fireAuth.signInWithEmailAndPassword(email, password)
       .then(res => {
         this.localStorage.setUser(JSON.stringify(res.user));
-        this.isProcces = true
+        this.isProcces = true;
+        this.router.navigate(['/content/users']);
       })
   }
 

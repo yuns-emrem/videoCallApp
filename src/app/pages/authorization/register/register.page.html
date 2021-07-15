@@ -6,22 +6,28 @@
 
 <ion-content>
   <form [formGroup]="registerForm" (ngSubmit)="onSignup()">
-    
+
     <ion-item>
       <ion-label position="floating">E-posta Adresi</ion-label>
       <ion-input formControlName='email' type="email" placeholder="Email" #email></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label position="floating">Adınız</ion-label>
-      <ion-input formControlName='name' type="text" placeholder="Ad" #name></ion-input>
+      <ion-input formControlName='username' type="text" placeholder="Ad" #name></ion-input>
     </ion-item>
-    
+
     <ion-item>
       <ion-label position="floating">Şifre</ion-label>
       <ion-input formControlName='password' type="password" placeholder="Password" #password></ion-input>
     </ion-item>
 
-    <ion-button expand="block" type="submit" >Sign Up</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="!registerForm.valid || isProcess">
+      <span *ngIf="!isProcess">Sign Up</span>
+      <ion-spinner *ngIf="isProcess" name="crescent"></ion-spinner>
+    </ion-button>
   </form>
+
+  <ion-button type="submit" expand="block" color="light" href="auth/login">Sign In</ion-button>
+
 </ion-content>

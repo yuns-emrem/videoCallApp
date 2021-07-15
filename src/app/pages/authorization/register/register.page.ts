@@ -38,7 +38,7 @@ export class RegisterPage implements OnInit {
         ])
       ],
 
-      name:[
+      username:[
         '',
         Validators.compose([
           Validators.required,
@@ -56,15 +56,17 @@ export class RegisterPage implements OnInit {
     })
   }
 
+  
+
   public async onSignup(){
     const {
       email,
-      name,
+      username,
      password,
     }=this.registerForm.value
 
-    console.log(email,name,password,'eklendi');
-    await this.auth.signup(email,password,name)
+    console.log(email,username,password,'eklendi');
+    await this.auth.signup(email,password,username)
     if(this.auth.isProcces)
     this.auth.isProcces = true
 

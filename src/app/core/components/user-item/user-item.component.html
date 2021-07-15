@@ -1,0 +1,10 @@
+<ion-item>
+  <ion-avatar slot="start">
+    <img src="https://picsum.photos/200">
+  </ion-avatar>
+  <ion-label>
+    <h2>{{ user.username }}</h2>
+    <h4>{{ user.email }}</h4>
+  </ion-label>
+  <ion-button (click)="callUserEventEmitter(user)" slot="end"> ARA </ion-button>
+</ion-item>

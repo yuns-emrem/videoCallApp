@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Users</ion-title>
+    <ion-button (click)="logOut()" slot="end" size="small" class="logOut">
+      Log Out
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <!-- <ion-list> -->
+    <app-user-item *ngFor="let user of users" [user]="user" (callEvent)="callUser($event)">
+    </app-user-item>
+  <!-- </ion-list>   -->
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Loading more data...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

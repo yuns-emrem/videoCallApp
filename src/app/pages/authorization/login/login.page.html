@@ -18,6 +18,11 @@
       <ion-input formControlName='password' type="password" placeholder="Password" ></ion-input>
     </ion-item>
 
-    <ion-button expand="block" type="submit" >Sign In</ion-button>
+    <ion-button expand="block" type="submit" [disabled]="!loginForm.valid || isProcess">
+      <span *ngIf="!isProcess">Sign In</span>
+      <ion-spinner *ngIf="isProcess" name="crescent"></ion-spinner>
+    </ion-button>
   </form>
+
+  <ion-button id="registertype" type="submit" expand="block" color="light" href="auth/register">Sign Up</ion-button>
 </ion-content>
